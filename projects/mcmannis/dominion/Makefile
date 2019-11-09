@@ -41,7 +41,7 @@ unittest4: unittest4.c compare.h dominion.h dominion.c rngs.o
 unittest5: unittest5.c compare.h dominion.h dominion.c rngs.o
 	gcc -o unittest5 unittest5.c dominion.c rngs.c $(COVERAGE)
 
-testresults:
+unittestresults:
 	gcc -o unittest1 unittest1.c dominion.c rngs.c $(COVERAGE)
 	./unittest1 >> unittestresults.out
 	gcov -b -f dominion.c >> unittestresults.out
