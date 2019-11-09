@@ -810,9 +810,14 @@ int ambassadorEffect(int choice1, int choice2, int currentPlayer, int handPos, s
 
     for (i = 0; i < state->handCount[currentPlayer]; i++)
     {
-        if (i != handPos && i == state->hand[currentPlayer][choice1] && i != choice1)
+//        if (i != handPos && i == state->hand[currentPlayer][choice1] && i != choice1)
+//        {
+//    		j++;
+//        }
+
+        if (i != handPos && state->hand[currentPlayer][i] == state->hand[currentPlayer][choice1])
         {
-            j++;
+    		j++;
         }
     }
     if (j < choice2)
@@ -845,7 +850,7 @@ int ambassadorEffect(int choice1, int choice2, int currentPlayer, int handPos, s
         {
             if (state->hand[currentPlayer][i] == state->hand[currentPlayer][choice1])
             {
-                discardCard(i, currentPlayer, state, 1);
+		discardCard(i, currentPlayer, state, 1);
                 break;
             }
         }
@@ -858,7 +863,8 @@ int ambassadorEffect(int choice1, int choice2, int currentPlayer, int handPos, s
 int tributeEffect(int currentPlayer, int nextPlayer, struct gameState *state)
 {
     int i;
-    int tributeRevealedCards[1] = {-1};
+//    int tributeRevealedCards[1] = {-1};
+    int tributeRevealedCards[2] = {-1, -1};
 
     if ((state->discardCount[nextPlayer] + state->deckCount[nextPlayer]) <= 1) {
         if (state->deckCount[nextPlayer] > 0) {
@@ -903,7 +909,7 @@ int tributeEffect(int currentPlayer, int nextPlayer, struct gameState *state)
     }
 
     for (i = 0; i <= 2; i ++) {
-        if (tributeRevealedCards[i] == copper || tributeRevealedCards[i] == silver || tributeRevealedCards[i] == gold) { //Treasure cards
+    	    if (tributeRevealedCards[i] == copper || tributeRevealedCards[i] == silver || tributeRevealedCards[i] == gold) { //Treasure cards
             state->coins -= 2;
         }
 
@@ -925,9 +931,13 @@ int mineEffect(int choice1, int choice2, int currentPlayer, int handPos, struct 
     int i;
     int j = state->hand[currentPlayer][choice1];  //store card we will trash
 
-    if (state->hand[currentPlayer][choice1] > copper || state->hand[currentPlayer][choice1] < gold)
+//    if (state->hand[currentPlayer][choice1] > copper || state->hand[currentPlayer][choice1] < gold)
+//    {
+//        return -1;
+//    }
+    if(state->hand[currentPlayer][choice1] < copper || state->hand[currentPlayer][choice1] > gold)
     {
-        return -1;
+	    return -1;
     }
 
     if (choice2 > treasure_map || choice2 < curse)
@@ -935,11 +945,15 @@ int mineEffect(int choice1, int choice2, int currentPlayer, int handPos, struct 
         return -1;
     }
 
-    if ( (getCost(state->hand[currentPlayer][choice1]) + 3) > getCost(choice2) )
+//    if ( (getCost(state->hand[currentPlayer][choice1]) + 3) > getCost(choice2) )
+//    {
+//        return -1;
+//    }
+
+    if ( (getCost(state->hand[currentPlayer][choice1]) + 3) < getCost(choice2) )
     {
         return -1;
     }
-
     gainCard(choice2, state, 2, currentPlayer);
 
     //discard card from hand
@@ -950,7 +964,7 @@ int mineEffect(int choice1, int choice2, int currentPlayer, int handPos, struct 
     {
         if (state->hand[currentPlayer][i] == j)
         {
-            discardCard(i, currentPlayer, state, 0);
+    		discardCard(i, currentPlayer, state, 0);
         }
     }
 

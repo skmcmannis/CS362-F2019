@@ -32,6 +32,15 @@ unittest1: unittest1.c compare.h dominion.h dominion.c rngs.o
 unittest2: unittest2.c compare.h dominion.h dominion.c rngs.o
 	gcc -o unittest2 unittest2.c dominion.c rngs.c $(COVERAGE)
 
+unittest3: unittest3.c compare.h dominion.h dominion.c rngs.o
+	gcc -o unittest3 unittest3.c dominion.c rngs.c $(COVERAGE)
+
+unittest4: unittest4.c compare.h dominion.h dominion.c rngs.o
+	gcc -o unittest4 unittest4.c dominion.c rngs.c $(COVERAGE)
+
+unittest5: unittest5.c compare.h dominion.h dominion.c rngs.o
+	gcc -o unittest5 unittest5.c dominion.c rngs.c $(COVERAGE)
+
 testresults:
 	gcc -o unittest1 unittest1.c dominion.c rngs.c $(COVERAGE)
 	./unittest1 >> unittestresults.out
@@ -40,6 +49,21 @@ testresults:
 	rm dominion.gcno
 	gcc -o unittest2 unittest2.c dominion.c rngs.c $(COVERAGE)
 	./unittest2 >> unittestresults.out
+	gcov -b -f dominion.c >> unittestresults.out
+	rm dominion.gcda
+	rm dominion.gcno
+	gcc -o unittest3 unittest3.c dominion.c rngs.c $(COVERAGE)
+	./unittest3 >> unittestresults.out
+	gcov -b -f dominion.c >> unittestresults.out
+	rm dominion.gcda
+	rm dominion.gcno
+	gcc -o unittest4 unittest4.c dominion.c rngs.c $(COVERAGE)
+	./unittest4 >> unittestresults.out
+	gcov -b -f dominion.c >> unittestresults.out
+	rm dominion.gcda
+	rm dominion.gcno
+	gcc -o unittest5 unittest5.c dominion.c rngs.c $(COVERAGE)
+	./unittest5 >> unittestresults.out
 	gcov -b -f dominion.c >> unittestresults.out
 	rm dominion.gcda
 	rm dominion.gcno
