@@ -1,4 +1,5 @@
 CFLAGS= -Wall -fpic -coverage -lm -std=c99
+COVERAGE= -Wall -fpic -ftest-coverage -fprofile-arcs -lm -std=c99
 
 rngs.o: rngs.h rngs.c
 	gcc -c rngs.c -g  $(CFLAGS)
@@ -24,6 +25,24 @@ runtests: testDrawCard
 
 player: player.c interface.o
 	gcc -o player player.c -g  dominion.o rngs.o interface.o $(CFLAGS)
+
+unittest1: unittest1.c compare.h dominion.h dominion.c rngs.o
+	gcc -o unittest1 unittest1.c dominion.c rngs.c $(COVERAGE)
+
+unittest2: unittest2.c compare.h dominion.h dominion.c rngs.o
+	gcc -o unittest2 unittest2.c dominion.c rngs.c $(COVERAGE)
+
+testresults:
+	gcc -o unittest1 unittest1.c dominion.c rngs.c $(COVERAGE)
+	./unittest1 >> unittestresults.out
+	gcov -b -f dominion.c >> unittestresults.out
+	rm dominion.gcda
+	rm dominion.gcno
+	gcc -o unittest2 unittest2.c dominion.c rngs.c $(COVERAGE)
+	./unittest2 >> unittestresults.out
+	gcov -b -f dominion.c >> unittestresults.out
+	rm dominion.gcda
+	rm dominion.gcno
 
 all: playdom player 
 

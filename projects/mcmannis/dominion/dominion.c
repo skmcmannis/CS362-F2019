@@ -712,7 +712,8 @@ int baronEffect(int choice1, int currentPlayer, struct gameState *state)
                         isGameOver(state);
                     }
                 }
-                card_not_discarded = 1;//Exit the loop
+                //card_not_discarded = 1;//Exit the loop
+		card_not_discarded = 0;
             }
 
             else {
@@ -756,7 +757,7 @@ int minionEffect(int choice1, int choice2, int currentPlayer, int handPos, struc
         //discard hand
         while(numHandCards(state) > 0)
         {
-            discardCard(handPos, currentPlayer, state, 0);
+    		discardCard(handPos, currentPlayer, state, 0);
         }
 
         //draw 4
