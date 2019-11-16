@@ -1,4 +1,5 @@
 CFLAGS= -Wall -fpic -coverage -lm -std=c99
+COVERAGE= -Wall -fpic -ftest-coverage -fprofile-arcs -lm -std=c99
 
 rngs.o: rngs.h rngs.c
 	gcc -c rngs.c -g  $(CFLAGS)
@@ -21,6 +22,31 @@ runtests: testDrawCard
 	gcov dominion.c >> unittestresult.out
 	cat dominion.c.gcov >> unittestresult.out
 
+randomtestcard1: randomtestcard1.c dominion.h dominion.c rngs.o
+	gcc -o randomtestcard1 randomtestcard1.c dominion.c rngs.c $(COVERAGE)
+
+randomtestcard2: randomtestcard2.c dominion.h dominion.c rngs.o
+	gcc -o randomtestcard2 randomtestcard2.c dominion.c rngs.c $(COVERAGE)
+
+randomtestcard3: randomtestcard3.c dominion.h dominion.c rngs.o
+	gcc -o randomtestcard3 randomtestcard3.c dominion.c rngs.c $(COVERAGE)
+
+randomtestresults:	
+	gcc -o randomtestcard1 randomtestcard1.c dominion.c rngs.c $(COVERAGE)
+	./randomtestcard1 >> randomtestresults.out
+	gcov -b -f dominion.c >> randomtestresults.out
+	rm dominion.gcda
+	rm dominion.gcno
+	gcc -o randomtestcard2 randomtestcard2.c dominion.c rngs.c $(COVERAGE)
+	./randomtestcard2 >> randomtestresults.out
+	gcov -b -f dominion.c >> randomtestresults.out
+	rm dominion.gcda
+	rm dominion.gcno
+	gcc -o randomtestcard3 randomtestcard3.c dominion.c rngs.c $(COVERAGE)
+	./randomtestcard3 >> randomtestresults.out
+	gcov -b -f dominion.c >> randomtestresults.out
+	rm dominion.gcda
+	rm dominion.gcno
 
 player: player.c interface.o
 	gcc -o player player.c -g  dominion.o rngs.o interface.o $(CFLAGS)

@@ -712,7 +712,8 @@ int baronEffect(int choice1, int currentPlayer, struct gameState *state)
                         isGameOver(state);
                     }
                 }
-                card_not_discarded = 1;//Exit the loop
+               // card_not_discarded = 1;//Exit the loop
+	       card_not_discarded = 0;//Exit the loop
             }
 
             else {
@@ -857,7 +858,8 @@ int ambassadorEffect(int choice1, int choice2, int currentPlayer, int handPos, s
 int tributeEffect(int currentPlayer, int nextPlayer, struct gameState *state)
 {
     int i;
-    int tributeRevealedCards[1] = {-1};
+   // int tributeRevealedCards[1] = {-1};
+	int tributeRevealedCards[2] = {-1, -1};
 
     if ((state->discardCount[nextPlayer] + state->deckCount[nextPlayer]) <= 1) {
         if (state->deckCount[nextPlayer] > 0) {
