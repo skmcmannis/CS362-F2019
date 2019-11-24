@@ -47,6 +47,7 @@ int runTest()
 {
 	int testCount = 0;
 	int cards[2] = {-1, -1};
+	int tributeRevealedCards[2] = {-1, -1};
 	int i;
 	int treasures;
 	int victory;
@@ -96,11 +97,14 @@ int runTest()
 			G.discard[1][j] = randCard();
 		}
 
+		//Reset tributeRevealedCards
+		memset(tributeRevealedCards, -1, sizeof(tributeRevealedCards));
+
 		//Copy current game state
 		memcpy(&O, &G, sizeof(struct gameState));
 
 		//Call the function
-		tributeEffect(0, 1, &G);
+		tributeCardEffect(0, 0, 0, 0, &G, 0, 0, 0, 1, tributeRevealedCards);
 
 		testCount++;
 		printf("Iteration %d\n", testCount);

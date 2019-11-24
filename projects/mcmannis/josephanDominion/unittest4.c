@@ -44,8 +44,11 @@ int main(int argc, char *argv[])
 	//Copy current game state
 	memcpy(&O, &G, sizeof(struct gameState));
 
+	//Set revealed card array
+	int tributeRevealedCards[2] = {-1, -1};
+
 	//Call the function
-	int ret = tributeEffect(0, 1, &G);
+	int ret = tributeCardEffect(0, 0, 0, 0, &G, 0, 0, 0, 1, tributeRevealedCards);
 
 	COMPARE(ret == 0); //Verify return value = 0 (success)
 	COMPARE(G.deckCount[1] == O.deckCount[1] - 2); //Verify two cards removed from next player's deck
@@ -75,8 +78,11 @@ int main(int argc, char *argv[])
 	//Copy current game state
 	memcpy(&O, &G, sizeof(struct gameState));
 
+	//Set revealed card array
+	memset(tributeRevealedCards, -1., sizeof(tributeRevealedCards));
+
 	//Call the function
-	ret = tributeEffect(0, 1, &G);
+	ret = tributeCardEffect(0, 0, 0, 0, &G, 0, 0, 0, 1, tributeRevealedCards);
 
 	COMPARE(ret == 0); //Verify return value = 0 (success)
 	COMPARE(G.deckCount[1] == O.deckCount[1] - 2); //Verify two cards removed from next player's deck
@@ -103,8 +109,11 @@ int main(int argc, char *argv[])
 	//Copy current game state
 	memcpy(&O, &G, sizeof(struct gameState));
 
+	//Set revealed card array
+	memset(tributeRevealedCards, -1., sizeof(tributeRevealedCards));
+
 	//Call the function
-	ret = tributeEffect(0, 1, &G);
+	ret = tributeCardEffect(0, 0, 0, 0, &G, 0, 0, 0, 1, tributeRevealedCards);
 
 	COMPARE(ret == 0); //Verify return value = 0 (success)
 	COMPARE(G.deckCount[1] == O.deckCount[1] - 2); //Verify two cards removed from next player's deck
@@ -133,8 +142,11 @@ int main(int argc, char *argv[])
 	//Copy current game state
 	memcpy(&O, &G, sizeof(struct gameState));
 
+	//Set revealed card array
+	memset(tributeRevealedCards, -1., sizeof(tributeRevealedCards));
+
 	//Call the function
-	ret = tributeEffect(0, 1, &G);
+	ret = tributeCardEffect(0, 0, 0, 0, &G, 0, 0, 0, 1, tributeRevealedCards);
 
 	COMPARE(ret == 0); //Verify return value = 0 (success)
 	COMPARE(G.deckCount[1] == O.deckCount[1] - 2); //Verify two cards removed from next player's deck
@@ -163,8 +175,11 @@ int main(int argc, char *argv[])
 	//Copy current game state
 	memcpy(&O, &G, sizeof(struct gameState));
 
+	//Set revealed card array
+	memset(tributeRevealedCards, -1., sizeof(tributeRevealedCards));
+
 	//Call the function
-	ret = tributeEffect(0, 1, &G);
+	ret = tributeCardEffect(0, 0, 0, 0, &G, 0, 0, 0, 1, tributeRevealedCards);
 
 	COMPARE(ret == 0); //Verify return value = 0 (success)
 	COMPARE(G.deckCount[1] == O.deckCount[1] - 2); //Verify two cards removed from next player's deck
@@ -194,8 +209,11 @@ int main(int argc, char *argv[])
 	//Copy current game state
 	memcpy(&O, &G, sizeof(struct gameState));
 
+	//Set revealed card array
+	memset(tributeRevealedCards, -1., sizeof(tributeRevealedCards));
+
 	//Call the function
-	ret = tributeEffect(0, 1, &G);
+	ret = tributeCardEffect(0, 0, 0, 0, &G, 0, 0, 0, 1, tributeRevealedCards);
 
 	COMPARE(ret == 0); //Verify return value = 0 (success)
 	COMPARE(G.deckCount[1] == O.deckCount[1] - 2); //Verify two cards removed from next player's deck
@@ -228,8 +246,11 @@ int main(int argc, char *argv[])
 	//Copy current game state
 	memcpy(&O, &G, sizeof(struct gameState));
 
+	//Set revealed card array
+	memset(tributeRevealedCards, -1., sizeof(tributeRevealedCards));
+
 	//Call the function
-	ret = tributeEffect(0, 1, &G);
+	ret = tributeCardEffect(0, 0, 0, 0, &G, 0, 0, 0, 1, tributeRevealedCards);
 
 	COMPARE(ret == 0); //Verify return value = 0 (success)
 	COMPARE(G.handCount[0] == O.handCount[0] - 1); //Verify hand count decreased by 1
@@ -261,8 +282,11 @@ int main(int argc, char *argv[])
 	//Copy current game state
 	memcpy(&O, &G, sizeof(struct gameState));
 
+	//Set revealed card array
+	memset(tributeRevealedCards, -1., sizeof(tributeRevealedCards));
+
 	//Call the function
-	ret = tributeEffect(0, 1, &G);
+	ret = tributeCardEffect(0, 0, 0, 0, &G, 0, 0, 0, 1, tributeRevealedCards);
 
 	COMPARE(ret == 0); //Verify return value = 0 (success)
 	COMPARE(G.handCount[0] == O.handCount[0] - 1); //Verify hand count decreased by 1
@@ -293,8 +317,11 @@ int main(int argc, char *argv[])
 	//Copy current game state
 	memcpy(&O, &G, sizeof(struct gameState));
 
+	//Set revealed card array
+	memset(tributeRevealedCards, -1., sizeof(tributeRevealedCards));
+
 	//Call the function
-	ret = tributeEffect(0, 1, &G);
+	ret = tributeCardEffect(0, 0, 0, 0, &G, 0, 0, 0, 1, tributeRevealedCards);
 
 	COMPARE(ret == 0); //Verify return value = 0 (success)
 	COMPARE(G.handCount[0] == O.handCount[0] - 1); //Verify hand count decreased by 1

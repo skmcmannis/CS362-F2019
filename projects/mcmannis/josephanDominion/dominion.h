@@ -131,7 +131,13 @@ int getWinners(int players[MAX_PLAYERS], struct gameState *state);
 /***************/
 /* MY CHANGES */
 /*************/
+int baronCardEffect(int card, int choice1, int choice2, int choice3, struct gameState *state, int handPos, int *bonus, int currentPlayer);
 
+int minionCardEffect(int card, int choice1, int choice2, int choice3, struct gameState *state, int handPos, int *bonus, int currentPlayer);
 
+int ambassadorCardEffect(int card, int choice1, int choice2, int choice3, struct gameState *state, int handPos, int *bonus, int currentPlayer);
 
+int tributeCardEffect(int card, int choice1, int choice2, int choice3, struct gameState *state, int handPos, int *bonus, int currentPlayer, int nextPlayer, int *tributeRevealedCards);
+
+int mineCardEffect(int card, int choice1, int choice2, int choice3, struct gameState *state, int handPos, int *bonus, int currentPlayer);
 #endif

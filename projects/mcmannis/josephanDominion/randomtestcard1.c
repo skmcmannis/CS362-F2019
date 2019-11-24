@@ -88,7 +88,7 @@ int runTest()
 		memcpy(&O, &G, sizeof(struct gameState));
 
 		//Call the function
-		baronEffect(choice, 0, &G);
+		baronCardEffect(0, choice, 0, 0, &G, 0, 0, 0);
 
 		testCount++;
 		printf("Iteration %d: choice = %d, handCount = %d, hasEstate = %d, estateCount = %d\n", testCount, choice, handCount, hasEstate, estateCount);

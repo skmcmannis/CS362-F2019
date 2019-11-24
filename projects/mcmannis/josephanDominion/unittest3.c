@@ -35,12 +35,13 @@ int main(int argc, char *argv[])
 	//Set hand variables
 	G.handCount[0] = 2;
 	G.hand[0][0] = ambassador;
+	G.hand[0][1] = estate;
 
 	//Copy current game state
 	memcpy(&O, &G, sizeof(struct gameState));
 
 	//Call the function
-	int ret = ambassadorEffect(1, -1, 0, 0, &G);
+	int ret = ambassadorCardEffect(0, 1, -1, 0, &G, 0, 0, 0);
 
 	COMPARE(ret == -1); //Verify return value = -1 (failure)
 
@@ -56,12 +57,13 @@ int main(int argc, char *argv[])
 	//Set hand variables
 	G.handCount[0] = 2;
 	G.hand[0][0] = ambassador;
+	G.hand[0][1] = estate;
 
 	//Copy current game state
 	memcpy(&O, &G, sizeof(struct gameState));
 
 	//Call the function
-	ret = ambassadorEffect(1, 3, 0, 0, &G);
+	ret = ambassadorCardEffect(0, 1, 3, 0, &G, 0, 0, 0);
 
 	COMPARE(ret == -1); //Verify return value = -1 (failure)
 
@@ -82,7 +84,7 @@ int main(int argc, char *argv[])
 	memcpy(&O, &G, sizeof(struct gameState));
 
 	//Call the function
-	ret = ambassadorEffect(0, 2, 0, 0, &G);
+	ret = ambassadorCardEffect(0, 0, 1, 0, &G, 0, 0, 0);
 
 	COMPARE(ret == -1); //Verify return value = -1 (failure)
 
@@ -104,7 +106,7 @@ int main(int argc, char *argv[])
 	memcpy(&O, &G, sizeof(struct gameState));
 
 	//Call the function
-	ret = ambassadorEffect(estate, 2, 0, 0, &G);
+	ret = ambassadorCardEffect(0, 1, 2, 0, &G, 0, 0, 0);
 
 	COMPARE(ret == -1); //Verify return value = -1 (failure)
 
@@ -127,7 +129,7 @@ int main(int argc, char *argv[])
 	memcpy(&O, &G, sizeof(struct gameState));
 
 	//Call the function
-	ret = ambassadorEffect(1, 2, 0, 0, &G);
+	ret = ambassadorCardEffect(0, 1, 2, 0, &G, 0, 0, 0);
 
 	COMPARE(ret == 0); //Verify return value = 0 (success)
 	COMPARE(G.supplyCount[estate] == O.supplyCount[estate] + 1); //Verify supply count for discarded card increased by 1
@@ -156,7 +158,7 @@ int main(int argc, char *argv[])
 	memcpy(&O, &G, sizeof(struct gameState));
 
 	//Call the function
-	ret = ambassadorEffect(1, 2, 0, 0, &G);
+	ret = ambassadorCardEffect(0, 1, 2, 0, &G, 0, 0, 0);
 
 	COMPARE(ret == 0); //Verify return value = 0 (success)
 	COMPARE(G.supplyCount[estate] == O.supplyCount[estate] + 1); //Verify supply count for discarded card increased by 1

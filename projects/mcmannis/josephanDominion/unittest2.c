@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
 	memcpy(&O, &G, sizeof(struct gameState));
 
 	//Call the function
-	minionEffect(1, 0, 0, 0, &G);
+	minionCardEffect(0, 1, 0, 0, &G, 0, 0, 0);
 
 	COMPARE(G.numActions == O.numActions + 1); //Verify addtional action granted
 	COMPARE(G.handCount[0] == O.handCount[0] - 1); //Verify hand count reduced by one
@@ -75,7 +75,7 @@ int main(int argc, char *argv[])
 	memcpy(&O, &G, sizeof(struct gameState));
 
 	//Call the function
-	minionEffect(0, 1, 0, 0, &G);
+	minionCardEffect(0, 0, 1, 0, &G, 0, 0, 0);
 
 	COMPARE(G.numActions == O.numActions + 1); //Verify addtional action granted
 	COMPARE(G.handCount[0] == 4); //Verify hand count increased to 4
@@ -104,7 +104,7 @@ int main(int argc, char *argv[])
 	memcpy(&O, &G, sizeof(struct gameState));
 
 	//Call the function
-	minionEffect(0, 1, 0, 0, &G);
+	minionCardEffect(0, 0, 1, 0, &G, 0, 0, 0);
 
 	COMPARE(G.numActions == O.numActions + 1); //Verify addtional action granted
 	COMPARE(G.handCount[0] == O.handCount[0] - 1); //Verify hand count reduced by one
@@ -135,7 +135,7 @@ int main(int argc, char *argv[])
 	memcpy(&O, &G, sizeof(struct gameState));
 
 	//Call the function
-	minionEffect(1, 0, 0, 0, &G);
+	minionCardEffect(0, 0, 1, 0, &G, 0, 0, 0);
 
 	COMPARE(G.numActions == O.numActions + 1); //Verify addtional action granted
 	COMPARE(G.handCount[0] == 4); //Verify hand count increased to 4
@@ -165,7 +165,7 @@ int main(int argc, char *argv[])
 	memcpy(&O, &G, sizeof(struct gameState));
 
 	//Call the function
-	minionEffect(1, 0, 0, 0, &G);
+	minionCardEffect(0, 0, 1, 0, &G, 0, 0, 0);
 
 	COMPARE(G.numActions == O.numActions + 1); //Verify addtional action granted
 	COMPARE(G.handCount[0] == 4); //Verify hand count increased to 4
@@ -193,7 +193,7 @@ int main(int argc, char *argv[])
 	memcpy(&O, &G, sizeof(struct gameState));
 
 	//Call the function
-	minionEffect(1, 0, 0, 0, &G);
+	minionCardEffect(0, 0, 1, 0, &G, 0, 0, 0);
 
 	COMPARE(G.numActions == O.numActions + 1); //Verify addtional action granted
 	COMPARE(G.handCount[0] == 4); //Verify hand count increased to 4

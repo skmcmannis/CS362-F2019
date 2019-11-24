@@ -806,7 +806,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
         return -1;
 
     case mine:
-        return mineCardEffect(card, choice1, choice2, choice3, state, handPos, *bonus, currentPlayer);
+        return mineCardEffect(card, choice1, choice2, choice3, state, handPos, bonus, currentPlayer);
 
     case remodel:
         j = state->hand[currentPlayer][choice1];  //store card we will trash
@@ -857,7 +857,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
         return 0;
 
     case baron:
-        return baronCardEffect(card, choice1, choice2, choice3, state, handPos, *bonus, currentPlayer);
+        return baronCardEffect(card, choice1, choice2, choice3, state, handPos, bonus, currentPlayer);
         
     case great_hall:
         //+1 Card
@@ -871,7 +871,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
         return 0;
 
     case minion:
-        return minionCardEffect(card, choice1, choice2, choice3, state, handPos, *bonus, currentPlayer);
+        return minionCardEffect(card, choice1, choice2, choice3, state, handPos, bonus, currentPlayer);
 
     case steward:
         if (choice1 == 1)
@@ -897,10 +897,10 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
         return 0;
 
     case tribute:
-        return tributeCardEffect(card, choice1, choice2, choice3, state, handPos, *bonus, currentPlayer, nextPlayer, *tributeRevealedCards);
+        return tributeCardEffect(card, choice1, choice2, choice3, state, handPos, bonus, currentPlayer, nextPlayer, tributeRevealedCards);
 
     case ambassador:
-        return ambassadorCardEffect(card, choice1, choice2, choice3, state, handPos, *bonus, currentPlayer);
+        return ambassadorCardEffect(card, choice1, choice2, choice3, state, handPos, bonus, currentPlayer);
 
     case cutpurse:
 
@@ -1089,7 +1089,8 @@ int baronCardEffect(int card, int choice1, int choice2, int choice3, struct game
 
 void discardHandDrawFour(struct gameState *state,  int handPos, int player) {
     //discard hand
-    while (numHandCards(state) > 0)
+//    while (numHandCards(state) > 0)
+    while(state->handCount[player] > 0)
     {
         discardCard(handPos, player, state, 0);
     }

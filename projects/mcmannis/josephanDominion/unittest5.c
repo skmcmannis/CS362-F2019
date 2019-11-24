@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
 	memcpy(&O, &G, sizeof(struct gameState));
 
 	//Call the function
-	int ret = mineEffect(1, copper, 0, 0, &G);
+	int ret = mineCardEffect(0, 1, copper, 0, &G, 0, 0, 0);
 
 	COMPARE(ret == 0); //Verify return value = 0 (success)
 	COMPARE(G.playedCards[0] == mine); //Verify mine in played card pile
@@ -68,7 +68,7 @@ int main(int argc, char *argv[])
 	memcpy(&O, &G, sizeof(struct gameState));
 
 	//Call the function
-	ret = mineEffect(1, copper, 0, 0, &G);
+	ret = mineCardEffect(0, 1, copper, 0, &G, 0, 0, 0);
 
 	COMPARE(ret == -1); //Verify return value = -1 (failure)
 
@@ -90,7 +90,7 @@ int main(int argc, char *argv[])
 	memcpy(&O, &G, sizeof(struct gameState));
 
 	//Call the function
-	ret = mineEffect(1, baron, 0, 0, &G);
+	ret = mineCardEffect(0, 1, baron, 0, &G, 0, 0, 0);
 
 	COMPARE(ret == -1); //Verify return value = -1 (failure)
 
@@ -112,7 +112,7 @@ int main(int argc, char *argv[])
 	memcpy(&O, &G, sizeof(struct gameState));
 
 	//Call the function
-	ret = mineEffect(1, gold, 0, 0, &G);
+	ret = mineCardEffect(0, 1, gold, 0, &G, 0, 0, 0);
 
 	COMPARE(ret == -1); //Verify return value = -1 (failure)
 
@@ -134,7 +134,7 @@ int main(int argc, char *argv[])
 	memcpy(&O, &G, sizeof(struct gameState));
 
 	//Call the function
-	ret = mineEffect(1, silver, 0, 0, &G);
+	ret = mineCardEffect(0, 1, silver, 0, &G, 0, 0, 0);
 
 	COMPARE(ret == 0); //Verify return value = 0 (success)
 	COMPARE(G.playedCards[0] == mine); //Verify mine in played card pile
@@ -163,7 +163,7 @@ int main(int argc, char *argv[])
 	memcpy(&O, &G, sizeof(struct gameState));
 
 	//Call the function
-	ret = mineEffect(1, silver, 0, 0, &G);
+	ret = mineCardEffect(0, 1, silver, 0, &G, 0, 0, 0);
 
 	COMPARE(ret == 0); //Verify return value = 0 (success)
 	COMPARE(G.playedCards[0] == mine); //Verify mine in played card pile

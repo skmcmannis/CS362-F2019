@@ -97,7 +97,7 @@ int runTest()
 		memcpy(&O, &G, sizeof(struct gameState));
 
 		//Call the function
-		minionEffect(choice1, choice2, 0, 0, &G);
+		minionCardEffect(0, choice1, choice2, 0, &G, 0, 0, 0);
 
 		testCount++;
 		printf("Iteration %d: choice1 = %d, choice2 = %d\n", testCount, choice1, choice2);
